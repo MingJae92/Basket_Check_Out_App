@@ -53,6 +53,33 @@ function Basket() {
 
       let totalPrice = 0;
 
+      for (const [item, count] of itemCounts) {
+        try {
+          const itemData = pricingRules[item];
+          if (!itemData) {
+            throw new Error(`Item ${item} is not found in the pricing rules.`);
+          }
+  
+          const { unitPrice, specialPrice } = itemData;
+          let itemPrice;
+  
+          if (specialPrice) {
+            const { quantity, price } = specialPrice;
+            const specialPriceGroups = Math.floor(count / quantity);
+            const remainder = count % quantity;
+            itemPrice = specialPriceGroups * price + remainder * unitPrice;
+            totalPrice += itemPrice;
+          } else {
+            itemPrice = count * unitPrice;
+            totalPrice += itemPrice;
+          }
+  
+          calculatedPrices[item] = itemPrice;
+        } catch (error) {
+          console.error(error.message);
+          setPricingRulesValid(false);
+        }
+      }
       
     }, []);
     
