@@ -51,6 +51,8 @@ function Basket() {
         itemCounts.set(item, (itemCounts.get(item) || 0) + 1);
       });
 
+      let totalPrice = 0;
+
       
     }, []);
     
