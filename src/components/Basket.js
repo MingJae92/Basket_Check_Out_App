@@ -99,7 +99,7 @@ function Basket() {
     };
 
     const handleTotalClick = () => {
-      // Calculate the total price of all items
+      
       const total = scannedItems.reduce((acc, item) => acc + item.price, 0);
       setTotalPrice(total);
       setTotalCalculated(true);
@@ -107,7 +107,16 @@ function Basket() {
     
   return (
     <div>
-      <h1>Basket</h1>
+      <h2>Checkout System!!!</h2>
+      <h3>Pricing Rules:</h3>
+          <ul>
+            {Object.entries(pricingRules).map(([item, { unitPrice, specialPrice }]) => (
+              <li key={item}>
+                {item}: {unitPrice} pence {specialPrice ? `, ${specialPrice.quantity} for ${specialPrice.price} pence` : ''}
+              </li>
+            ))}
+          </ul>
+      <p>Scan items using individual letters (A, B, C, and D):</p>
     </div>
   )
 }
