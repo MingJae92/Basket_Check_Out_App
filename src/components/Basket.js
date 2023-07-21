@@ -81,8 +81,14 @@ function Basket() {
         }
       }
       setItemPrices(calculatedPrices);
+
+      const scannedItemsList = Object.entries(calculatedPrices).map(([item, price]) => ({
+        item,
+        price,
+      }));
+      setScannedItems(scannedItemsList);
       
-    }, []);
+    }, [basket, pricingRules, isPricingRulesValid]);
     
   return (
     <div>
