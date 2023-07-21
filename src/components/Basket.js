@@ -8,7 +8,11 @@ function Basket() {
   const [isPricingRulesValid, setPricingRulesValid] = useState(true);
   const [isTotalCalculated, setTotalCalculated] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-  
+
+  useEffect(() => {
+    setPricingRulesValid(validatePricingRules(pricingRules));
+  }, [pricingRules]);
+
   const pricingRules = useMemo(
     () => ({
       A: { unitPrice: 50, specialPrice: { quantity: 3, price: 130 } },
