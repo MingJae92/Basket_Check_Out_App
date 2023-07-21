@@ -80,6 +80,7 @@ function Basket() {
           setPricingRulesValid(false);
         }
       }
+      setItemPrices(calculatedPrices);
       
     }, []);
     
