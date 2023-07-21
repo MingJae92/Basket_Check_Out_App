@@ -43,6 +43,11 @@ function Basket() {
         return;
       }
   
+      const items = basket.split('');
+      const itemCounts = new Map();
+      const calculatedPrices = {};
+
+      
       
     }, []);
     
