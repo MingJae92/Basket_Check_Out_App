@@ -89,6 +89,14 @@ function Basket() {
       setScannedItems(scannedItemsList);
       
     }, [basket, pricingRules, isPricingRulesValid]);
+
+    const handleInputChange = (event) => {
+      const input = event.target.value.toUpperCase(); // Convert input to uppercase to match pricing rules
+      const allowedItems = Object.keys(pricingRules).join('');
+      const filteredInput = input.split('').filter((char) => allowedItems.includes(char));
+      setBasket(filteredInput.join(''));
+      setTotalCalculated(false); // Reset total calculation status when input changes
+    };
     
   return (
     <div>
