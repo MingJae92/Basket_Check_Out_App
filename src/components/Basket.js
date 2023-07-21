@@ -13,7 +13,7 @@ function Basket() {
   );
   return (
     <div>
-      <h1>Check Out System!!!</h1>
+      <h1>Check Out System</h1>
       <h3>Pricing Rules:</h3>
       <ul>
             {Object.entries(pricingRules).map(([item, { unitPrice, specialPrice }]) => (
