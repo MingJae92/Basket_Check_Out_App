@@ -91,11 +91,18 @@ function Basket() {
     }, [basket, pricingRules, isPricingRulesValid]);
 
     const handleInputChange = (event) => {
-      const input = event.target.value.toUpperCase(); // Convert input to uppercase to match pricing rules
+      const input = event.target.value.toUpperCase(); 
       const allowedItems = Object.keys(pricingRules).join('');
       const filteredInput = input.split('').filter((char) => allowedItems.includes(char));
       setBasket(filteredInput.join(''));
       setTotalCalculated(false); // Reset total calculation status when input changes
+    };
+
+    const handleTotalClick = () => {
+      // Calculate the total price of all items
+      const total = scannedItems.reduce((acc, item) => acc + item.price, 0);
+      setTotalPrice(total);
+      setTotalCalculated(true);
     };
     
   return (
