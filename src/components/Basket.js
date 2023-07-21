@@ -47,7 +47,10 @@ function Basket() {
       const itemCounts = new Map();
       const calculatedPrices = {};
 
-      
+      items.forEach((item) => {
+        itemCounts.set(item, (itemCounts.get(item) || 0) + 1);
+      });
+
       
     }, []);
     
