@@ -1,7 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
 
-import React from 'react'
-
 function Basket() {
   const [basket, setBasket] = useState('');
   const [itemPrices, setItemPrices] = useState({});
@@ -106,7 +104,7 @@ function Basket() {
   };
 
   return (
-    <div>
+    <div className="checkout-container">
       <h2>Checkout System!!!</h2>
       <h3>Pricing Rules:</h3>
       <ul>
