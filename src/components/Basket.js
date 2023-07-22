@@ -26,9 +26,9 @@ function Basket() {
    }, [pricingRules]);
  
    // Function to validate if the pricing rules are correctly defined
-   const validatePricingRules = (rules) => {
-     for (const item of Object.keys(rules)) {
-       const itemData = rules[item];
+   const validatePricingRules = () => {
+     for (const item of Object.keys(pricingRules)) {
+       const itemData = pricingRules[item];
        if (!itemData || typeof itemData.unitPrice !== 'number') {
          return false;
        }
