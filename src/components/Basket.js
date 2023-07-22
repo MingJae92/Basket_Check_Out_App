@@ -135,6 +135,10 @@ function Basket() {
       ) : (
         <p>Error: Incorrect pricing rules!</p>
       )}
+
+      {isTotalCalculated && <p>Total Price: {totalPrice} pence</p>}
+
+      <button onClick={handleTotalClick}>Calculate Total</button>
     </div>
   )
 }
