@@ -1,9 +1,18 @@
-import React from 'react'
+import React from 'react';
 
-function ScannedItemsList() {
+const ScannedItemsList = ({ scannedItems }) => {
   return (
-    <div>ScannedItemsList</div>
-  )
-}
+    <div>
+      <h3>Item Prices:</h3>
+      <ul>
+        {scannedItems.map(({ id, item, price }) => (
+          <li key={id}>
+            {item}: {price} pence
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-export default ScannedItemsList
+export default ScannedItemsList;
