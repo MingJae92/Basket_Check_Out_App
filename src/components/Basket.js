@@ -19,7 +19,7 @@ function Basket() {
     setPricingRulesValid(validatePricingRules(PRICING_RULES));
   }, []);
 
-  const { calculatedPrices, scannedItems } = useMemo(() => calculateItemPrices(basket, PRICING_RULES), [
+  const { calculatedPrices, scannedItems } = useMemo(() => calculatedPrices(basket, PRICING_RULES), [
     basket,
     isPricingRulesValid,
   ]);
@@ -36,10 +36,22 @@ function Basket() {
     setTotalCalculated(true);
   }, [scannedItems, isPricingRulesValid]);
 
+  const handleInputChange = (event) => {
+    const input = event.target.value.toUpperCase();
+    const allowedItems = Object.keys(PRICING_RULES).join('');
+    const filteredInput = input.split('').filter((char) => allowedItems.includes(char));
+    setBasket(filteredInput.join(''));
+    setTotalCalculated(false);
+  };
 
-  
+  const handleTotalClick = () => {
+    setTotalCalculated(true);
+  };
 
-  
+
+
+
+
 }
 
 export default Basket
