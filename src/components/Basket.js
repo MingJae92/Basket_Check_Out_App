@@ -18,6 +18,28 @@ function Basket() {
   useEffect(() => {
     setPricingRulesValid(validatePricingRules(PRICING_RULES));
   }, []);
+
+  const { calculatedPrices, scannedItems } = useMemo(() => calculateItemPrices(basket, PRICING_RULES), [
+    basket,
+    isPricingRulesValid,
+  ]);
+
+  useEffect(() => {
+    if (!isPricingRulesValid) {
+      setTotalCalculated(false);
+      setTotalPrice(0);
+      return;
+    }
+
+    const total = scannedItems.reduce((acc, { price }) => acc + price, 0);
+    setTotalPrice(total);
+    setTotalCalculated(true);
+  }, [scannedItems, isPricingRulesValid]);
+
+
+  
+
+  
 }
 
 export default Basket
