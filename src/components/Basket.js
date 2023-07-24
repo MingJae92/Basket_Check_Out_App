@@ -47,9 +47,25 @@ function Basket() {
   const handleTotalClick = () => {
     setTotalCalculated(true);
   };
+  return (
+    <div className="checkout-container">
+      <h2>Checkout System!!!</h2>
+      <PricingRulesList pricingRules={PRICING_RULES} />
 
+      <p>Scan items using individual letters (A, B, C, and D):</p>
+      <input type="text" value={basket} onChange={handleInputChange} />
 
+      {isPricingRulesValid ? (
+        <ScannedItemsList scannedItems={scannedItems} />
+      ) : (
+        <p>Error: Incorrect pricing rules!</p>
+      )}
 
+      {isTotalCalculated && <p>Total Price: {totalPrice} pence</p>}
+
+      <button onClick={handleTotalClick}>Calculate Total</button>
+    </div>
+  );
 
 
 }
