@@ -116,7 +116,7 @@ function Basket() {
  
    return (
      <div className="checkout-container">
-       <h2>Checkout System!!!</h2>
+       <h2>Checkout System</h2>
        <h3>Pricing Rules:</h3>
        <ul>
          {/* Render the pricing rules */}
